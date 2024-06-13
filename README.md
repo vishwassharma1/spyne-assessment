@@ -35,6 +35,7 @@ Each service (user-service, discussion-service, etc.) has its own .env file. Cop
 
 Build and run using Docker:
 
+
 docker-compose up --build
 This command will build and start all services defined in the docker-compose.yml file.
 
@@ -62,5 +63,4 @@ This project is licensed under the MIT License.
 
 Contact
 For questions or feedback, please contact Vishwas Sharma at vsharma7100@gmail.com.
-
 
