@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  user-service:
+    build: ./user-service
+    ports:
+      - "5000:5000"
+    environment:
+      - MONGO_URI=mongodb+srv://vsharma7100:BSA%40vish%40123@nodeapp.pioapum.mongodb.net/wanderon?retryWrites=true&w=majority&appName=nodeApp
+      - JWT_SECRET=YrJgpFZDKj7hwHsNIxLVU0Q9bVijrUF2
+      - PORT=5000
+
+  discussion-service:
+    build: ./discussion-service
+    ports:
+      - "5001:5001"
+    environment:
+      - MONGO_URI=mongodb+srv://vsharma7100:BSA%40vish%40123@nodeapp.pioapum.mongodb.net/wanderon?retryWrites=true&w=majority&appName=nodeApp
+      - JWT_SECRET=YrJgpFZDKj7hwHsNIxLVU0Q9bVijrUF2
+      - PORT=5001
+
+  comment-service:
+    build: ./comment-service
+    ports:
+      - "5002:5002"
+    environment:
+      - MONGO_URI=mongodb+srv://vsharma7100:BSA%40vish%40123@nodeapp.pioapum.mongodb.net/wanderon?retryWrites=true&w=majority&appName=nodeApp
+      - JWT_SECRET=YrJgpFZDKj7hwHsNIxLVU0Q9bVijrUF2
+      - PORT=5002
+
+  interaction-service:
+    build: ./interaction-service
+    ports:
+      - "5003:5003"
+    environment:
+      - MONGO_URI=mongodb+srv://vsharma7100:BSA%40vish%40123@nodeapp.pioapum.mongodb.net/wanderon?retryWrites=true&w=majority&appName=nodeApp
+      - JWT_SECRET=YrJgpFZDKj7hwHsNIxLVU0Q9bVijrUF2
+      - PORT=5003
+
+  gateway:
+    build: ./gateway
+    ports:
+      - "8000:8000"
+    environment:
+      - USER_SERVICE_URL=http://user-service:5000
+      - DISCUSSION_SERVICE_URL=http://discussion-service:5001
+      - COMMENT_SERVICE_URL=http://comment-service:5002
+      - INTERACTION_SERVICE_URL=http://interaction-service:5003
+      - PORT=8000
